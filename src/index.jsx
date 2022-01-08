@@ -1,28 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { render } from "react-dom"
+import {BrowserRouter as Router,Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
+import Survey from "./pages/Survey";
 
-ReactDOM.render(
-    <React.StrictMode>
-        <Home />
-    </React.StrictMode>,
-    document.getElementById('root')
-)
+const rootElement = document.getElementById("root");
 
-
-/**
- * ReactDOM.render(
- <React.StrictMode>
- <Router>
- <Route path="/">
- <Home/>
- </Route>
- <Route path="/survey">
- <Survey/>
- </Route>
- </Router>
- </React.StrictMode>,
- document.getElementById('root')
- )
-
- */
+render(
+    <Router>
+        <Routes>
+            <Route path="/"  element={<Home />}/>
+            <Route path="/survey" element={<Survey />}/>
+        </Routes>
+    </Router>,
+    rootElement
+);
