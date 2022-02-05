@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Survey from './pages/Survey'
 import Header from './components/Header'
 import Error from './components/Error'
+import Freelances from './pages/Freelances'
 
 const rootElement = document.getElementById('root')
 
@@ -13,6 +14,7 @@ render(
     <Header />
     <Routes>
       <Route path='/' element={<Home />} />
+      <Route path='/freelances' element={<Freelances />} />
       <Route path='/survey/:questionNumber' element={<Survey />} />
       <Route path="*" element={<Error />} />
     </Routes>
