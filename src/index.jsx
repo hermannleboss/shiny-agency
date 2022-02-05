@@ -11,9 +11,13 @@ import { createGlobalStyle } from 'styled-components'
 
 const rootElement = document.getElementById('root')
 const GlobalStyle = createGlobalStyle`
-    div {
-        font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    }
+  * {
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
 `
 render(
   <Router>
