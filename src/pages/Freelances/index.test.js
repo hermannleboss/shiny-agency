@@ -4,7 +4,7 @@ import { setupServer } from 'msw/node'
 import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 
 import Freelances from './'
-import { ThemeProvider } from '../../utils/context'
+import { Wrapper } from '../../utils/test'
 
 const freelancersMockedData = [
   {
@@ -26,19 +26,12 @@ const server = setupServer(
   })
 )
 test('Should render without crash', async () => {
-  render(
-    <ThemeProvider>
-      <Freelances />
-    </ThemeProvider>
-  )
+
+  render(<Freelances />, { wrapper: Wrapper })
   expect(screen.getByTestId('loader')).toBeTruthy()
 })
 test('Should display freelancers names', async () => {
-  render(
-    <ThemeProvider>
-      <Freelances />
-    </ThemeProvider>
-  )
+  render(<Freelances />, { wrapper: Wrapper })
   expect(screen.getByTestId('loader')).toBeTruthy()
   await waitForElementToBeRemoved(() => screen.getByTestId('loader'))
   await waitFor(() => {
@@ -46,9 +39,15 @@ test('Should display freelancers names', async () => {
     expect(screen.getByText('Hermione Granger')).toBeTruthy()
   })
 })
-// Active la simulation d'API avant les tests depuis server
 beforeAll(() => server.listen())
-// Réinitialise tout ce qu'on aurait pu ajouter en termes de durée pour nos tests avant chaque test
 afterEach(() => server.resetHandlers())
-// Ferme la simulation d'API une fois que les tests sont finis
 afterAll(() => server.close())
+
+it('Should display freelancers names after loader is removed', async () => {
+  render(<Freelances />)
+
+  await waitForElementToBeRemoved(() => screen.getByTestId('loader'))
+  expect(screen.getByText('Harry Potter')).toBeInTheDocument()
+  expect(screen.getByText('Hermione Granger')).toBeInTheDocument()
+  expect(screen.queryByTestId('loader')).not.toBeInTheDocument()
+})
