@@ -7,15 +7,17 @@ import Header from './components/Header'
 import Error from './components/Error'
 import Freelances from './pages/Freelances'
 import Results from './pages/Results'
-import { SurveyProvider, ThemeProvider } from './utils/context'
+import { SurveyProvider } from './utils/context'
 import Footer from './components/Footer'
 import GlobalStyle from './utils/style/GlobalStyle'
 import Profile from './pages/Profile'
+import { Provider } from 'react-redux'
+import store from './utils/store'
 
 const rootElement = document.getElementById('root')
 render(
-  <Router>
-    <ThemeProvider>
+  <Provider store={store}>
+    <Router>
       <SurveyProvider>
         <GlobalStyle />
         <Header />
@@ -30,7 +32,7 @@ render(
 
         <Footer />
       </SurveyProvider>
-    </ThemeProvider>
-  </Router>,
+    </Router>
+  </Provider>,
   rootElement
 )

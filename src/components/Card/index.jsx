@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Component } from 'react'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import DefaultPicture from '../../assets/profile.png'
@@ -39,6 +38,7 @@ const CardWrapper = styled.div`
   border-radius: 30px;
   width: 300px;
   height: 300px;
+
   &:hover {
     cursor: pointer;
   }

@@ -11,7 +11,6 @@ describe('La fonction formatJobList', () => {
   })
 })
 
-
 describe('The formatQueryParams function', () => {
   it('should use the right format for param', () => {
     const expectedState = 'a1=answer1'

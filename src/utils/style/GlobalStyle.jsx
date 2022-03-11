@@ -1,7 +1,8 @@
 import React from 'react'
 import { createGlobalStyle } from 'styled-components'
-import { useContext } from 'react'
-import { ThemeContext } from '../context'
+import { selectTheme } from '../selectors'
+import { useSelector } from 'react-redux'
+
 export const StyledGlobalStyle = createGlobalStyle`
   * {
     font-family: 'Trebuchet MS', Helvetica, sans-serif;
@@ -13,8 +14,9 @@ export const StyledGlobalStyle = createGlobalStyle`
     margin: 0;
   }
 `
+
 function GlobalStyle() {
-  const { theme } = useContext(ThemeContext)
+  const theme = useSelector(selectTheme)
   return <StyledGlobalStyle isDarkMode={theme === 'dark'} />
 }
 

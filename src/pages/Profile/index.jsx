@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import colors from '../../utils/style/colors'
-import { ThemeContext } from '../../utils/context'
+import { useSelector } from 'react-redux'
+import { selectTheme } from '../../utils/selectors'
 
 const ProfileWrapper = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ const ProfileWrapper = styled.div`
   padding: 90px 0;
   margin: 0 90px;
   background-color: ${({ theme }) =>
-  theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
+          theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
 `
 
 const ProfileDetails = styled.div`
@@ -68,8 +69,7 @@ const Skill = styled.span`
   border-radius: 5px;
   padding: 5px;
   margin-right: 5px;
-  border: 1px solid
-    ${({ theme }) => (theme === 'light' ? colors.dark : 'white')};
+  border: 1px solid ${({ theme }) => (theme === 'light' ? colors.dark : 'white')};
 `
 
 const Availability = styled.span`
@@ -83,11 +83,14 @@ const Availability = styled.span`
     background-color: ${({ available }) => (available ? 'green' : 'red')};
     content: '';
   }
+
   padding-left: 20px;
   position: relative;
 `
 
 function Profile() {
+
+  const theme = useSelector(selectTheme)
   const { id: queryId } = useParams()
   const [profileData, setProfileData] = useState({})
   useEffect(() => {
@@ -106,36 +109,32 @@ function Profile() {
     job,
     skills,
     available,
-    id,
+    id
   } = profileData
 
   return (
-    <ThemeContext.Consumer>
-      {({ theme }) => (
-        <ProfileWrapper theme={theme}>
-          <Picture src={picture} alt={name} height={150} width={150} />
-          <ProfileDetails theme={theme}>
-            <TitleWrapper>
-              <Title>{name}</Title>
-              <Location>{location}</Location>
-            </TitleWrapper>
-            <JobTitle>{job}</JobTitle>
-            <SkillsWrapper>
-              {skills &&
-              skills.map((skill) => (
-                <Skill key={`skill-${skill}-${id}`} theme={theme}>
-                  {skill}
-                </Skill>
-              ))}
-            </SkillsWrapper>
-            <Availability available={available}>
-              {available ? 'Disponible maintenant' : 'Indisponible'}
-            </Availability>
-            <Price>{tjm} € / jour</Price>
-          </ProfileDetails>
-        </ProfileWrapper>
-      )}
-    </ThemeContext.Consumer>
+    <ProfileWrapper theme={theme}>
+      <Picture src={picture} alt={name} height={150} width={150} />
+      <ProfileDetails theme={theme}>
+        <TitleWrapper>
+          <Title>{name}</Title>
+          <Location>{location}</Location>
+        </TitleWrapper>
+        <JobTitle>{job}</JobTitle>
+        <SkillsWrapper>
+          {skills &&
+          skills.map((skill) => (
+            <Skill key={`skill-${skill}-${id}`} theme={theme}>
+              {skill}
+            </Skill>
+          ))}
+        </SkillsWrapper>
+        <Availability available={available}>
+          {available ? 'Disponible maintenant' : 'Indisponible'}
+        </Availability>
+        <Price>{tjm} € / jour</Price>
+      </ProfileDetails>
+    </ProfileWrapper>
   )
 }
 

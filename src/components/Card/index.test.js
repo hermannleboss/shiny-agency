@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from './'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { ThemeProvider } from '../../utils/context'
 
 describe('Card', () => {
@@ -8,9 +8,9 @@ describe('Card', () => {
     render(
       <ThemeProvider>
         <Card
-          title="Harry Potter"
-          label="Magicien frontend"
-          picture="/myPicture.png"
+          title='Harry Potter'
+          label='Magicien frontend'
+          picture='/myPicture.png'
         />
       </ThemeProvider>
     )
@@ -23,9 +23,9 @@ describe('Card', () => {
     render(
       <ThemeProvider>
         <Card
-          title="Harry Potter"
-          label="Magicien frontend"
-          picture="/myPicture.png"
+          title='Harry Potter'
+          label='Magicien frontend'
+          picture='/myPicture.png'
         />
       </ThemeProvider>
     )

@@ -4,7 +4,8 @@ import styled from 'styled-components'
 import { StyledLink } from '../../utils/style/Atoms'
 import DarkLogo from '../../assets/dark-logo.png'
 import LightLogo from '../../assets/light-logo.png'
-import { useTheme } from '../../utils/hooks'
+import { useSelector } from 'react-redux'
+import { selectTheme } from '../../utils/selectors'
 
 const HomeLogo = styled.img`
   height: 70px;
@@ -18,8 +19,7 @@ const NavContainer = styled.nav`
 `
 
 function Header() {
-
-  const { theme } = useTheme()
+  const theme = useSelector(selectTheme)
   return (
     <NavContainer>
       <Link to='/'>

@@ -12,6 +12,7 @@ export function Wrapper({ children }) {
     </MemoryRouter>
   )
 }
+
 export function render(ui) {
   rtlRender(ui, { wrapper: Wrapper })
 }

@@ -1,10 +1,12 @@
 import React from 'react'
-import Card from '../../components/Card'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import Card from '../../components/Card'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
-import { useFetch, useTheme } from '../../utils/hooks'
-import { Link } from 'react-router-dom'
+import { useFetch } from '../../utils/hooks'
+import { useSelector } from 'react-redux'
+import { selectTheme } from '../../utils/selectors'
 
 const CardsContainer = styled.div`
   display: grid;
@@ -38,7 +40,7 @@ const LoaderWrapper = styled.div`
 `
 
 function Freelances() {
-  const { theme } = useTheme()
+  const theme = useSelector(selectTheme)
   const { data, isLoading, error } = useFetch(
     `http://localhost:8000/freelances`
   )

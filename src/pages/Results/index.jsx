@@ -2,8 +2,11 @@ import React, { useContext } from 'react'
 import { SurveyContext } from '../../utils/context'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import { useFetch, useTheme } from '../../utils/hooks'
+import { useFetch } from '../../utils/hooks'
 import { Loader, StyledLink } from '../../utils/style/Atoms'
+
+import { useSelector } from 'react-redux'
+import { selectTheme } from '../../utils/selectors'
 
 const ResultsContainer = styled.div`
   display: flex;
@@ -61,6 +64,7 @@ export function formatJobList(title, listLength, index) {
   }
   return `${title},`
 }
+
 export function formatFetchParams(answers) {
   const answerNumbers = Object.keys(answers)
 
@@ -72,7 +76,7 @@ export function formatFetchParams(answers) {
 }
 
 function Results() {
-  const { theme } = useTheme()
+  const theme = useSelector(selectTheme)
   const { answers } = useContext(SurveyContext)
   const fetchParams = formatFetchParams(answers)
 

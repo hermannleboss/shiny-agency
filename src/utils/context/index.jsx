@@ -1,7 +1,6 @@
-import React, { useState, createContext } from 'react'
+import React, { createContext, useState } from 'react'
 
-export const ThemeContext = createContext( 'light')
-
+/*
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('light')
   const toggleTheme = () => {
@@ -14,8 +13,7 @@ export const ThemeProvider = ({ children }) => {
     </ThemeContext.Provider>
   )
 }
-
-
+*/
 export const SurveyContext = createContext()
 
 export const SurveyProvider = ({ children }) => {
