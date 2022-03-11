@@ -1,0 +1,13 @@
+{
+  "main.js": "/shiny-agency/build/static/js/main.d733881b.chunk.js",
+  "main.js.map": "/shiny-agency/build/static/js/main.d733881b.chunk.js.map",
+  "runtime~main.js": "/shiny-agency/build/static/js/runtime~main.6c01521a.js",
+  "runtime~main.js.map": "/shiny-agency/build/static/js/runtime~main.6c01521a.js.map",
+  "static/js/2.f981567d.chunk.js": "/shiny-agency/build/static/js/2.f981567d.chunk.js",
+  "static/js/2.f981567d.chunk.js.map": "/shiny-agency/build/static/js/2.f981567d.chunk.js.map",
+  "index.html": "/shiny-agency/build/index.html",
+  "precache-manifest.d99a52baf72d3c6aa013c2860748b1d5.js": "/shiny-agency/build/precache-manifest.d99a52baf72d3c6aa013c2860748b1d5.js",
+  "service-worker.js": "/shiny-agency/build/service-worker.js",
+  "static/media/404.svg": "/shiny-agency/build/static/media/404.352de2ad.svg",
+  "static/media/home-illustration.svg": "/shiny-agency/build/static/media/home-illustration.c1486bc7.svg"
+}
