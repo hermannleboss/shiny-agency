@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/shiny-agency/precache-manifest.7cbe8670d81cc0b4aefc89ee6e0c5a54.js"
+  "/shiny-agency/precache-manifest.cf626a2be9267bceb9effe07e451c83f.js"
 );
 
 workbox.clientsClaim();
