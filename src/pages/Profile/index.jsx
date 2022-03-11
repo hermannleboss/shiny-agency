@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import colors from '../../utils/style/colors'
@@ -94,7 +94,7 @@ function Profile() {
     fetch(`http://localhost:8000/freelance?id=${queryId}`)
       .then((response) => response.json())
       .then((jsonResponse) => {
-        setProfileData(jsonResponse?.freelanceData)
+        setProfileData(jsonResponse.freelanceData)
       })
   }, [queryId])
 

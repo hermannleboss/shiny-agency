@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Component } from 'react'
 import styled from 'styled-components'
@@ -53,7 +54,7 @@ class Card extends Component {
     const { theme, picture, label, title } = this.props
 
     return (
-      <CardWrapper theme={theme} onClick={this.setFavorite}>
+      <CardWrapper theme={theme}>
         <CardLabel theme={theme}>{label}</CardLabel>
         <CardImage src={picture} alt='freelance' />
         <CardTitle theme={theme}>{title}</CardTitle>

@@ -10,6 +10,7 @@ import Results from './pages/Results'
 import { SurveyProvider, ThemeProvider } from './utils/context'
 import Footer from './components/Footer'
 import GlobalStyle from './utils/style/GlobalStyle'
+import Profile from './pages/Profile'
 
 const rootElement = document.getElementById('root')
 render(
@@ -21,6 +22,7 @@ render(
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/freelances' element={<Freelances />} />
+          <Route path='/profile/:id' element={<Profile />}> </Route>
           <Route path='/survey/:questionNumber' element={<Survey />} />
           <Route path='/results' element={<Results />} />
           <Route path='*' element={<Error />} />
