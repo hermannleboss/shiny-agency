@@ -1,9 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { ThemeContext } from '../context'
 
 export function useFetch(url) {
-
-  let abortController = new AbortController();
   const [data, setData] = useState({})
   const [isLoading, setLoading] = useState(true)
   const [error, setError] = useState(false)
