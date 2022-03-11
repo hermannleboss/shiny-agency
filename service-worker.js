@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/shiny-agency/build/precache-manifest.d99a52baf72d3c6aa013c2860748b1d5.js"
+  "/shiny-agency/precache-manifest.7cbe8670d81cc0b4aefc89ee6e0c5a54.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/shiny-agency/build/index.html", {
+workbox.routing.registerNavigationRoute("/shiny-agency/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });
