@@ -7,7 +7,8 @@ const reduxDevtools = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVT
 const reducer = combineReducers({
   theme:      themeReducer,
   freelances: freelancesReducer,
-  survey:     surveyReducer
+  survey:     surveyReducer,
+  freelance:  freelancesReducer
 })
 
 const store = createStore(reducer, reduxDevtools)
