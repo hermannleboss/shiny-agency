@@ -13,7 +13,6 @@ export const selectFreelance = (freelanceId) => (state) => {
   return voidFreelance
 }*/
 
-
 export const selectFreelance = (freelanceId) => (state) => {
-  return state.freelance[freelanceId] ?? voidFreelance
+  return state.freelance[freelanceId] ? state.freelance[freelanceId] :  voidFreelance
 }
