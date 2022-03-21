@@ -1,5 +1,6 @@
 import produce from 'immer'
 import { selectFreelance } from '../utils/selectors'
+import { createAction } from '@reduxjs/toolkit'
 
 const initialState = {}
 
@@ -12,15 +13,13 @@ const freelanceFetching = (freelanceId) => ({
   payload: { freelanceId }
 })
 
-const freelanceResolved = (freelanceId, data) => ({
-  type:    RESOLVED,
+const freelanceResolved = createAction('freelance/resolved', (freelanceId, data) => ({
   payload: { freelanceId, data }
-})
+}))
 const freelanceRejected = (freelanceId, error) => ({
   type:    REJECTED,
   payload: { freelanceId, error }
 })
-
 
 export async function fetchOrUpdateFreelance(store, freelanceId) {
   const selectFreelanceById = selectFreelance(freelanceId)
