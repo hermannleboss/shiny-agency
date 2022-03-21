@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { SurveyContext } from '../../utils/context'
-import { useSelector, useStore } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectSurvey, selectTheme } from '../../utils/selectors'
 import { fetchOrUpdateSurvey } from '../../features/survey'
 
@@ -45,12 +45,12 @@ const ReplyBox = styled.button`
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }) =>
-  theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
+          theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
   color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
   border-radius: 30px;
   cursor: pointer;
   box-shadow: ${(props) =>
-  props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
+          props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
 
   &:first-child {
     margin-right: 15px;
@@ -80,10 +80,10 @@ function Survey() {
   }
 
   const survey = useSelector(selectSurvey)
-  const store = useStore()
+  const dispatch = useDispatch()
   useEffect(() => {
-    fetchOrUpdateSurvey(store)
-  }, [store])
+    dispatch(fetchOrUpdateSurvey)
+  }, [dispatch])
 
   const isLoading = survey.status === 'void' || survey.status === 'pending'
   if (survey.status === 'rejected') {
