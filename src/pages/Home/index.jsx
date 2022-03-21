@@ -14,7 +14,7 @@ const HomeWrapper = styled.div`
 const HomerContainer = styled.div`
   margin: 30px;
   background-color: ${({ theme }) =>
-          theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
+  theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
   padding: 60px 90px;
   display: flex;
   flex-direction: row;

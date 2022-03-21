@@ -45,12 +45,12 @@ const ReplyBox = styled.button`
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }) =>
-          theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
+  theme === 'light' ? colors.backgroundLight : colors.backgroundDark};
   color: ${({ theme }) => (theme === 'light' ? '#000000' : '#ffffff')};
   border-radius: 30px;
   cursor: pointer;
   box-shadow: ${(props) =>
-          props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
+  props.isSelected ? `0px 0px 0px 2px ${colors.primary} inset` : 'none'};
 
   &:first-child {
     margin-right: 15px;

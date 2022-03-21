@@ -11,18 +11,18 @@ const freelancesFetching = createAction('freelances/fetching')
 const freelancesResolved = createAction('freelances/resolved')
 const freelancesRejected = createAction('freelances/rejected')
 
-export async function fetchOrUpdateFreelances(store) {
-  const status = selectFreelances(store.getState()).status
+export async function fetchOrUpdateFreelances(dispatch, getState) {
+  const status = selectFreelances(getState()).status
   if (status === 'pending' || status === 'updating') {
     return
   }
-  store.dispatch(freelancesFetching())
+  dispatch(freelancesFetching())
   try {
     const response = await fetch('http://localhost:8000/freelances')
     const data = await response.json()
-    store.dispatch(freelancesResolved(data))
+    dispatch(freelancesResolved(data))
   } catch (error) {
-    store.dispatch(freelancesRejected(error))
+    dispatch(freelancesRejected(error))
   }
 }
 
@@ -42,7 +42,7 @@ export default createReducer(initialState, builder =>
         draft.status = 'updating'
         return
       }
-      return
+
     })
     .addCase(freelancesResolved, (draft, action) => {
       if (draft.status === 'pending' || draft.status === 'updating') {
@@ -50,7 +50,7 @@ export default createReducer(initialState, builder =>
         draft.status = 'resolved'
         return
       }
-      return
+
     })
     .addCase(freelancesRejected, (draft, action) => {
       if (draft.status === 'pending' || draft.status === 'updating') {
@@ -59,6 +59,6 @@ export default createReducer(initialState, builder =>
         draft.status = 'rejected'
         return
       }
-      return
+
     })
 )

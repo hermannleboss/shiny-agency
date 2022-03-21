@@ -96,7 +96,7 @@ function Results() {
     results.status === 'pending' ||
     results.status === 'updating'
 
-  if (results.data!=null && results.data.resultsData.length < 1) {
+  if (results.data != null && results.data.resultsData.length < 1) {
     return <EmptyList theme={theme} />
   }
 

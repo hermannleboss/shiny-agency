@@ -42,7 +42,7 @@ export default createReducer(initialState, builder =>
         draft.status = 'updating'
         return
       }
-      return
+
     })
     .addCase(surveyResolved, (draft, action) => {
       if (draft.status === 'pending' || draft.status === 'updating') {
@@ -50,7 +50,7 @@ export default createReducer(initialState, builder =>
         draft.status = 'resolved'
         return
       }
-      return
+
     })
     .addCase(surveyRejected, (draft, action) => {
       if (draft.status === 'pending' || draft.status === 'updating') {
@@ -59,7 +59,7 @@ export default createReducer(initialState, builder =>
         draft.status = 'rejected'
         return
       }
-      return
+
     })
 )
 

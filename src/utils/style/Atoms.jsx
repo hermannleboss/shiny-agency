@@ -27,8 +27,8 @@ export const StyledLink = styled(Link)`
   font-size: 18px;
   text-align: center;
   ${(props) =>
-          props.$isFullLink &&
-          `color: white; 
+  props.$isFullLink &&
+  `color: white; 
     border-radius: 30px; 
     background-color: ${colors.primary};`}
 `

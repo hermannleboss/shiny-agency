@@ -3,20 +3,20 @@ import { createAction, createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
   status: 'void',
-  data: null,
-  error: null,
-  params: null,
+  data:   null,
+  error:  null,
+  params: null
 }
 const resultsFetching = createAction('results/fetching', (params) => ({
-  payload: { params },
+  payload: { params }
 }))
 
 const resultsResolved = createAction('results/resolved', (params, data) => ({
-  payload: { params, data },
+  payload: { params, data }
 }))
 
 const resultsRejected = createAction('results/rejected', (params, error) => ({
-  payload: { params, error },
+  payload: { params, error }
 }))
 
 export function fetchOrUpdateResults(params) {
@@ -57,7 +57,7 @@ export default createReducer(initialState, (builder) =>
         draft.status = 'resolved'
         return
       }
-      return
+
     })
     .addCase(resultsRejected, (draft, action) => {
       if (draft.params !== action.payload.params) {
@@ -67,7 +67,7 @@ export default createReducer(initialState, (builder) =>
         draft.error = action.payload.error
         draft.data = null
         draft.status = 'rejected'
-        return
+
       }
     })
 )
