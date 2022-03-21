@@ -1,12 +1,12 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { SurveyContext } from '../../utils/context'
 import styled from 'styled-components'
+import EmptyList from '../../components/EmptyList'
 import colors from '../../utils/style/colors'
-import { useFetch } from '../../utils/hooks'
 import { Loader, StyledLink } from '../../utils/style/Atoms'
-
-import { useSelector } from 'react-redux'
-import { selectTheme } from '../../utils/selectors'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectResults, selectTheme } from '../../utils/selectors'
+import { fetchOrUpdateResults } from '../../features/results'
 
 const ResultsContainer = styled.div`
   display: flex;
@@ -58,14 +58,7 @@ const LoaderWrapper = styled.div`
   justify-content: center;
 `
 
-export function formatJobList(title, listLength, index) {
-  if (index === listLength - 1) {
-    return title
-  }
-  return `${title},`
-}
-
-export function formatFetchParams(answers) {
+export function formatQueryParams(answers) {
   const answerNumbers = Object.keys(answers)
 
   return answerNumbers.reduce((previousParams, answerNumber, index) => {
@@ -75,20 +68,37 @@ export function formatFetchParams(answers) {
   }, '')
 }
 
+export function formatJobList(title, listLength, index) {
+  if (index === listLength - 1) {
+    return title
+  }
+  return `${title},`
+}
+
 function Results() {
   const theme = useSelector(selectTheme)
   const { answers } = useContext(SurveyContext)
-  const fetchParams = formatFetchParams(answers)
+  const fetchParams = formatQueryParams(answers)
 
-  const { data, isLoading, error } = useFetch(
-    `http://localhost:8000/results?${fetchParams}`
-  )
+  const results = useSelector(selectResults)
+  const dispatch = useDispatch()
 
-  if (error) {
+  useEffect(() => {
+    dispatch(fetchOrUpdateResults(fetchParams))
+  }, [dispatch, fetchParams])
+
+  if (results.status === 'rejected') {
     return <span>Il y a un problème</span>
   }
 
-  const { resultsData } = data
+  const isLoading =
+    results.status === 'void' ||
+    results.status === 'pending' ||
+    results.status === 'updating'
+
+  if (results.data!=null && results.data.resultsData.length < 1) {
+    return <EmptyList theme={theme} />
+  }
 
   return isLoading ? (
     <LoaderWrapper>
@@ -98,13 +108,13 @@ function Results() {
     <ResultsContainer theme={theme}>
       <ResultsTitle theme={theme}>
         Les compétences dont vous avez besoin :
-        {resultsData &&
-        resultsData.map((result, index) => (
+        {results.data.resultsData &&
+        results.data.resultsData.map((result, index) => (
           <JobTitle
             key={`result-title-${index}-${result.title}`}
             theme={theme}
           >
-            {formatJobList(result.title, resultsData.length, index)}
+            {formatJobList(result.title, results.data.resultsData.length, index)}
           </JobTitle>
         ))}
       </ResultsTitle>
@@ -112,8 +122,8 @@ function Results() {
         Découvrez nos profils
       </StyledLink>
       <DescriptionWrapper>
-        {resultsData &&
-        resultsData.map((result, index) => (
+        {results.data.resultsData &&
+        results.data.resultsData.map((result, index) => (
           <JobDescription
             theme={theme}
             key={`result-detail-${index}-${result.title}`}
