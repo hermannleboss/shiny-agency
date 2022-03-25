@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import EmailInput from '../EmailInput'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleTheme } from '../../features/theme'
+import * as themeActions from '../../features/theme'
 import { selectTheme } from '../../utils/selectors'
 
 const FooterContainer = styled.footer`
@@ -30,7 +30,7 @@ function Footer() {
   return (
     <FooterContainer>
       <EmailInput theme={theme} />
-      <NightModeButton onClick={() => dispatch(toggleTheme())}>
+      <NightModeButton onClick={() => dispatch(themeActions.toggle())}>
         Changer de mode : {theme === 'light' ? '☀️' : '🌙'}
       </NightModeButton>
     </FooterContainer>

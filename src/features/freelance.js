@@ -3,10 +3,6 @@ import { createAction, createReducer } from '@reduxjs/toolkit'
 
 const initialState = {}
 
-const FETCHING = 'freelance/fetching'
-const RESOLVED = 'freelance/resolved'
-const REJECTED = 'freelance/rejected'
-
 const freelanceFetching = createAction('freelance/fetching', (freelanceId) => ({
   payload: { freelanceId }
 }))

@@ -114,8 +114,6 @@ function Profile() {
     id
   } = profileData
 
-  const isLoading = freelance.status === 'void' || freelance.status === 'pending'
-
   return (
     <ProfileWrapper theme={theme}>
       <Picture src={picture} alt={name} height={150} width={150} />
