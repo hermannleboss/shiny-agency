@@ -1,10 +1,4 @@
-import { createAction, createSlice } from '@reduxjs/toolkit'
-
-// action creators
-
-export const toggleTheme = createAction('theme/toggle')
-export const setTheme = createAction('theme/set')
-setTheme('light')
+import { createSlice } from '@reduxjs/toolkit'
 
 const themeSlice = createSlice({
   name:         'theme',
