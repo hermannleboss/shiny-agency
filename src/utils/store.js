@@ -4,6 +4,7 @@ import surveyReducer from '../features/survey'
 import freelanceReducer from '../features/freelance'
 import resultsReducer from '../features/results'
 import { configureStore } from '@reduxjs/toolkit'
+import answersReducer from '../features/answers'
 
 export default configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export default configureStore({
     freelances: freelancesReducer,
     survey:     surveyReducer,
     freelance:  freelanceReducer,
-    results:    resultsReducer
+    results:    resultsReducer,
+    answers:    answersReducer
   }
 })
 
