@@ -1,5 +1,5 @@
 import { selectFreelances } from '../utils/selectors'
-import { createAction, createReducer } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   status: 'void',
@@ -7,28 +7,26 @@ const initialState = {
   error:  null
 }
 
-const freelancesFetching = createAction('freelances/fetching')
-const freelancesResolved = createAction('freelances/resolved')
-const freelancesRejected = createAction('freelances/rejected')
-
 export async function fetchOrUpdateFreelances(dispatch, getState) {
   const status = selectFreelances(getState()).status
   if (status === 'pending' || status === 'updating') {
     return
   }
-  dispatch(freelancesFetching())
+  dispatch(actions.fetching())
   try {
     const response = await fetch('http://localhost:8000/freelances')
     const data = await response.json()
-    dispatch(freelancesResolved(data))
+    dispatch(actions.resolved(data))
   } catch (error) {
-    dispatch(freelancesRejected(error))
+    dispatch(actions.rejected(error))
   }
 }
 
-export default createReducer(initialState, builder =>
-  builder
-    .addCase(freelancesFetching, (draft, action) => {
+const { actions, reducer } = createSlice({
+  name:     'freelances',
+  initialState,
+  reducers: {
+    fetching: (draft) => {
       if (draft.status === 'void') {
         draft.status = 'pending'
         return
@@ -42,23 +40,27 @@ export default createReducer(initialState, builder =>
         draft.status = 'updating'
         return
       }
-
-    })
-    .addCase(freelancesResolved, (draft, action) => {
+      return
+    },
+    resolved: (draft, actions) => {
       if (draft.status === 'pending' || draft.status === 'updating') {
-        draft.data = action.payload
+        draft.data = actions.payload
         draft.status = 'resolved'
         return
       }
-
-    })
-    .addCase(freelancesRejected, (draft, action) => {
+      return
+    },
+    rejected: (draft, actions) => {
       if (draft.status === 'pending' || draft.status === 'updating') {
-        draft.error = action.payload
+        draft.error = actions.payload
         draft.data = null
         draft.status = 'rejected'
         return
       }
+      return
+    }
+  }
+})
 
-    })
-)
+export const { resolved, fetching, rejected } = actions
+export default reducer
