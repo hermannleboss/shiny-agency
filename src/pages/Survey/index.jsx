@@ -77,7 +77,7 @@ function Survey() {
   const dispatch = useDispatch()
 
   function saveReply(answer) {
-    dispatch(saveAnswer({ [questionNumber]: answer }))
+    dispatch(saveAnswer({questionNumber, answer}))
   }
 
   useEffect(() => {

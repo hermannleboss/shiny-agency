@@ -5,7 +5,7 @@ const { actions, reducer } = createSlice({
   initialState: {},
   reducers:     {
     saveAnswer: (draft, action) => {
-      draft[action.payload.questionNumber] = action.payload.answers
+      draft[action.payload.questionNumber] = action.payload.answer
     }
   }
 })
