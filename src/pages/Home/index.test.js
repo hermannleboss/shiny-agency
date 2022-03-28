@@ -1,15 +1,11 @@
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
-import { render, screen } from '@testing-library/react'
+import { render } from '../../utils/test'
+import { screen } from '@testing-library/react'
 import Home from './'
 
 describe('The Home component', () => {
   it('should render title', () => {
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    )
+    render(<Home />)
     expect(
       screen.getByRole('heading', {
         level: 2,

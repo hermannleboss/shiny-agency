@@ -1,18 +1,20 @@
 import React from 'react'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { render, Wrapper } from '../../utils/test'
+import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
 
 import Freelances from './'
-import { Wrapper } from '../../utils/test'
 
 const freelancersMockedData = [
   {
+    id:      1,
     name:    'Harry Potter',
     job:     'Magicien frontend',
     picture: ''
   },
   {
+    id:      2,
     name:    'Hermione Granger',
     job:     'Magicienne fullstack',
     picture: ''
