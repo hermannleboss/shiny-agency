@@ -1,11 +1,10 @@
-import React, { useContext, useEffect } from 'react'
-import { SurveyContext } from '../../utils/context'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import EmptyList from '../../components/EmptyList'
 import colors from '../../utils/style/colors'
 import { Loader, StyledLink } from '../../utils/style/Atoms'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectResults, selectTheme } from '../../utils/selectors'
+import { selectAnswers, selectResults, selectTheme } from '../../utils/selectors'
 import { fetchOrUpdateResults } from '../../features/results'
 
 const ResultsContainer = styled.div`
@@ -77,9 +76,8 @@ export function formatJobList(title, listLength, index) {
 
 function Results() {
   const theme = useSelector(selectTheme)
-  const { answers } = useContext(SurveyContext)
+  const answers = useSelector(selectAnswers)
   const fetchParams = formatQueryParams(answers)
-
   const results = useSelector(selectResults)
   const dispatch = useDispatch()
 
