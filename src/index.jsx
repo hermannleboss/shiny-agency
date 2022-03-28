@@ -18,7 +18,6 @@ const rootElement = document.getElementById('root')
 render(
   <Provider store={store}>
     <Router>
-      <SurveyProvider>
         <GlobalStyle />
         <Header />
         <Routes>
@@ -31,7 +30,6 @@ render(
         </Routes>
 
         <Footer />
-      </SurveyProvider>
     </Router>
   </Provider>,
   rootElement

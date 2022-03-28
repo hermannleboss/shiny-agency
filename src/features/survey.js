@@ -23,7 +23,7 @@ export async function fetchOrUpdateSurvey(dispatch, getState) {
 }
 
 const { actions, reducer } = createSlice({
-  name:     'freelances',
+  name:     'survey',
   initialState,
   reducers: {
     fetching: (draft) => {
