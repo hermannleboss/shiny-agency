@@ -1,8 +1,8 @@
 import React from 'react'
 import { rest } from 'msw'
 import { setupServer } from 'msw/node'
-import { render, Wrapper } from '../../utils/test'
-import { screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react'
+import { render } from '../../utils/test'
+import { screen, waitForElementToBeRemoved } from '@testing-library/react'
 
 import Freelances from './'
 
@@ -27,27 +27,12 @@ const server = setupServer(
     return res(ctx.json({ freelancersList: freelancersMockedData }))
   })
 )
-test('Should render without crash', async () => {
-
-  render(<Freelances />, { wrapper: Wrapper })
-  expect(screen.getByTestId('loader')).toBeTruthy()
-})
-test('Should display freelancers names', async () => {
-  render(<Freelances />, { wrapper: Wrapper })
-  expect(screen.getByTestId('loader')).toBeTruthy()
-  await waitForElementToBeRemoved(() => screen.getByTestId('loader'))
-  await waitFor(() => {
-    expect(screen.getByText('Harry Potter')).toBeTruthy()
-    expect(screen.getByText('Hermione Granger')).toBeTruthy()
-  })
-})
 beforeAll(() => server.listen())
 afterEach(() => server.resetHandlers())
 afterAll(() => server.close())
 
 it('Should display freelancers names after loader is removed', async () => {
   render(<Freelances />)
-
   await waitForElementToBeRemoved(() => screen.getByTestId('loader'))
   expect(screen.getByText('Harry Potter')).toBeInTheDocument
   expect(screen.getByText('Hermione Granger')).toBeInTheDocument
