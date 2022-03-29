@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import Card from '../../components/Card'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectFreelances, selectTheme } from '../../utils/selectors'
-import { fetchOrUpdateFreelances } from '../../features/freelances'
+import { useSelector } from 'react-redux'
+import { selectTheme } from '../../utils/selectors'
+import { useQuery } from 'react-query'
+import { fetch } from 'msw/lib/types/context'
 
 const CardsContainer = styled.div`
   display: grid;
@@ -41,17 +42,16 @@ const LoaderWrapper = styled.div`
 
 function Freelances() {
   const theme = useSelector(selectTheme)
-  const freelances = useSelector(selectFreelances)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchOrUpdateFreelances)
-  }, [dispatch])
-
-  if (freelances.status === 'rejected') {
+  const { data, isLoading, error } = useQuery('freelances', async () => {
+    const response = await fetch('http://localhost:8000/freelances')
+    const data = await response.json()
+    return data
+  })
+  if (error != null) {
     return <span>Il y a un problème</span>
   }
 
-  const isLoading = freelances.status === 'void' || freelances.status === 'pending'
+  //const isLoading = freelances.status === 'void' || freelances.status === 'pending'
   return (
     <div>
       <PageTitle theme={theme}>Trouvez votre prestataire</PageTitle>
@@ -64,7 +64,7 @@ function Freelances() {
         </LoaderWrapper>
       ) : (
         <CardsContainer>
-          {freelances.data.freelancersList.map((profile, index) => (
+          {data.freelancersList.map((profile, index) => (
             <Link key={`freelance-${profile.id}`} to={`/profile/${profile.id}`}>
               <Card
                 key={`${profile.name}-${index}`}
