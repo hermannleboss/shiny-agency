@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { Loader } from '../../utils/style/Atoms'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectAnswers, selectSurvey, selectTheme } from '../../utils/selectors'
-import { fetchOrUpdateSurvey } from '../../features/survey'
+import { selectAnswers, selectTheme } from '../../utils/selectors'
 import { saveAnswer } from '../../features/answers'
+import { useQuery } from 'react-query'
 
 const SurveyContainer = styled.div`
   display: flex;
@@ -73,19 +73,29 @@ function Survey() {
   const nextQuestionNumber = questionNumberInt + 1
   const theme = useSelector(selectTheme)
   const answers = useSelector(selectAnswers)
-  const survey = useSelector(selectSurvey)
   const dispatch = useDispatch()
 
   function saveReply(answer) {
-    dispatch(saveAnswer({questionNumber, answer}))
+    dispatch(saveAnswer({ questionNumber, answer }))
   }
 
-  useEffect(() => {
-    dispatch(fetchOrUpdateSurvey)
-  }, [dispatch])
+  /*
 
-  const isLoading = survey.status === 'void' || survey.status === 'pending'
-  if (survey.status === 'rejected') {
+    const survey = useSelector(selectSurvey)
+    useEffect(() => {
+      dispatch(fetchOrUpdateSurvey)
+    }, [dispatch])
+    const isLoading = survey.status === 'void' || survey.status === 'pending'
+
+    */
+
+  const { data, isLoading, error } = useQuery('survey', async () => {
+    const response = await fetch('http://localhost:8000/survey')
+    const data = await response.json()
+    return data
+  })
+
+  if (error != null) {
     return <span>Oups il y a eu un problème</span>
   }
 
@@ -97,7 +107,7 @@ function Survey() {
       ) : (
         <>
           <QuestionContent theme={theme} data-testid='question-content'>
-            {survey.data.surveyData && survey.data.surveyData[questionNumber]}
+            {data.surveyData && data.surveyData[questionNumber]}
           </QuestionContent>
           <ReplyWrapper>
             <ReplyBox
@@ -117,7 +127,7 @@ function Survey() {
           </ReplyWrapper>
           <LinkWrapper theme={theme}>
             <Link to={`/survey/${prevQuestionNumber}`}>Précédent</Link>
-            {survey.data.surveyData && survey.data.surveyData[questionNumberInt + 1] ? (
+            {data.surveyData && data.surveyData[questionNumberInt + 1] ? (
               <Link to={`/survey/${nextQuestionNumber}`}>Suivant</Link>
             ) : (
               <Link to='/results'>Résultats</Link>

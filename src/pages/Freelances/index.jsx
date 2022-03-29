@@ -7,7 +7,6 @@ import { Loader } from '../../utils/style/Atoms'
 import { useSelector } from 'react-redux'
 import { selectTheme } from '../../utils/selectors'
 import { useQuery } from 'react-query'
-import { fetch } from 'msw/lib/types/context'
 
 const CardsContainer = styled.div`
   display: grid;
