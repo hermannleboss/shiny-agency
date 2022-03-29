@@ -7,17 +7,19 @@ import Header from './components/Header'
 import Error from './components/Error'
 import Freelances from './pages/Freelances'
 import Results from './pages/Results'
-import { SurveyProvider } from './utils/context'
 import Footer from './components/Footer'
 import GlobalStyle from './utils/style/GlobalStyle'
 import Profile from './pages/Profile'
 import { Provider } from 'react-redux'
 import store from './utils/store'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const rootElement = document.getElementById('root')
+const queryClient = new QueryClient()
 render(
-  <Provider store={store}>
-    <Router>
+  <QueryClientProvider client={queryClient}>
+    <Provider store={store}>
+      <Router>
         <GlobalStyle />
         <Header />
         <Routes>
@@ -30,7 +32,8 @@ render(
         </Routes>
 
         <Footer />
-    </Router>
-  </Provider>,
+      </Router>
+    </Provider>
+  </QueryClientProvider>,
   rootElement
 )
