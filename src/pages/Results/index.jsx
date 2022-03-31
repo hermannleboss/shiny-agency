@@ -80,7 +80,7 @@ function Results() {
   const fetchParams = formatQueryParams(answers)
 
   const { data, isLoading, error } = useQuery('results', async () => {
-    const response = await fetch(`http://localhost:8000/results?${fetchParams}`)
+    const response = await fetch(`https://shiny.hermanneho.com/results?${fetchParams}`)
     const data = await response.json()
     return data
   })

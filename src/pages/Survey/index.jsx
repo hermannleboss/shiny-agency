@@ -79,18 +79,8 @@ function Survey() {
     dispatch(saveAnswer({ questionNumber, answer }))
   }
 
-  /*
-
-    const survey = useSelector(selectSurvey)
-    useEffect(() => {
-      dispatch(fetchOrUpdateSurvey)
-    }, [dispatch])
-    const isLoading = survey.status === 'void' || survey.status === 'pending'
-
-    */
-
   const { data, isLoading, error } = useQuery('survey', async () => {
-    const response = await fetch('http://localhost:8000/survey')
+    const response = await fetch('https://shiny.hermanneho.com/survey')
     const data = await response.json()
     return data
   })
