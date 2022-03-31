@@ -32,7 +32,7 @@
     "type": "git",
     "url": "git+https://github.com/hermannleboss/shiny-agency.git"
   },
-  "homepage": "https://hermannleboss.github.io/shiny-agency/",
+  "homepage": "https://hermannleboss.github.io/shiny-agency/build/",
   "eslintConfig": {
     "extends": [
       "react-app",
