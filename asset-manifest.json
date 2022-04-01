@@ -1,14 +1,14 @@
 {
-  "main.js": "/shiny-agency/build/static/js/main.2529b09f.chunk.js",
-  "main.js.map": "/shiny-agency/build/static/js/main.2529b09f.chunk.js.map",
-  "runtime~main.js": "/shiny-agency/build/static/js/runtime~main.6c01521a.js",
-  "runtime~main.js.map": "/shiny-agency/build/static/js/runtime~main.6c01521a.js.map",
-  "static/js/2.ecab82f6.chunk.js": "/shiny-agency/build/static/js/2.ecab82f6.chunk.js",
-  "static/js/2.ecab82f6.chunk.js.map": "/shiny-agency/build/static/js/2.ecab82f6.chunk.js.map",
-  "index.html": "/shiny-agency/build/index.html",
-  "precache-manifest.353e2f38b88bea61a9b025dad93212bf.js": "/shiny-agency/build/precache-manifest.353e2f38b88bea61a9b025dad93212bf.js",
-  "service-worker.js": "/shiny-agency/build/service-worker.js",
-  "static/media/404.svg": "/shiny-agency/build/static/media/404.352de2ad.svg",
-  "static/media/empty.svg": "/shiny-agency/build/static/media/empty.3f9a231c.svg",
-  "static/media/home-illustration.svg": "/shiny-agency/build/static/media/home-illustration.c1486bc7.svg"
+  "main.js": "/shiny-agency/static/js/main.2529b09f.chunk.js",
+  "main.js.map": "/shiny-agency/static/js/main.2529b09f.chunk.js.map",
+  "runtime~main.js": "/shiny-agency/static/js/runtime~main.716d241e.js",
+  "runtime~main.js.map": "/shiny-agency/static/js/runtime~main.716d241e.js.map",
+  "static/js/2.2390993b.chunk.js": "/shiny-agency/static/js/2.2390993b.chunk.js",
+  "static/js/2.2390993b.chunk.js.map": "/shiny-agency/static/js/2.2390993b.chunk.js.map",
+  "index.html": "/shiny-agency/index.html",
+  "precache-manifest.5f718694503d776d268492f4ff17dab4.js": "/shiny-agency/precache-manifest.5f718694503d776d268492f4ff17dab4.js",
+  "service-worker.js": "/shiny-agency/service-worker.js",
+  "static/media/404.svg": "/shiny-agency/static/media/404.352de2ad.svg",
+  "static/media/empty.svg": "/shiny-agency/static/media/empty.3f9a231c.svg",
+  "static/media/home-illustration.svg": "/shiny-agency/static/media/home-illustration.c1486bc7.svg"
 }
