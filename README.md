@@ -1,7 +1,7 @@
 # Creating react PWA with React, Redux, React Query.
 
 This project is fictive app for an freelance agency named **shiny agence**
-You can find the project deployed on [Github page](https://hermannleboss.github.io/shiny-agency/) with this link [https://hermannleboss.github.io/shiny-agency/](Shiny-Agency)
+You can find the project deployed on [Github page](https://hermannleboss.github.io/shiny-agency/) with this link [Shiny-Agency](https://hermannleboss.github.io/shiny-agency/)
 
 ## Feature
 
