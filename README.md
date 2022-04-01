@@ -1,12 +1,30 @@
-# Getting Started with Create React Card
+# Creating react PWA with React, Redux, React Query.
 
-This project was bootstrapped with [Create React Card](https://github.com/facebook/create-react-app).
+This project is fictive app for an freelance agency named **shiny agence**
+You can find the project deployed on [Github page](https://hermannleboss.github.io/shiny-agency/) with this link [https://hermannleboss.github.io/shiny-agency/](Shiny Agency)
+
+## Feature
+
+### Freelance Profiles
+
+Shiny Agence displays a list of freelance profiles provided by an API, and can display a single profile. 
+
+### Survey 
+
+The app provide a survey to find what you need for your projet
+
+### Dark Mode
+The app let the user to change into Dark mode with a toggle button
+
+![image](https://user-images.githubusercontent.com/28951070/161261654-b88d6520-7531-43d2-8d73-092fd6b1675c.png)
+
+
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,12 +32,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+### `yarn build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -29,7 +42,24 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `yarn deploy`
+
+Builds the app for production to the `build` folder.\ with the `yarn build` cmd then deploy it to github page with `gh-pages -d build`
+
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+
+### `yarn test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
